@@ -487,9 +487,6 @@ class ChewieController extends ChangeNotifier {
   /// Wether or not to show the controls when initializing the widget.
   final bool showControlsOnInitialize;
 
-  /// Whether or not to show the controls at all
-  final bool showControls;
-
   /// Controller to pass into the [InteractiveViewer] component
   final TransformationController? transformationController;
 
@@ -603,6 +600,9 @@ class ChewieController extends ChangeNotifier {
 
   bool get isPlaying => videoPlayerController.value.isPlaying;
 
+  /// Whether or not to show the controls at all
+  bool showControls;
+
   Future<dynamic> _initialize() async {
     await videoPlayerController.setLooping(looping);
 
@@ -652,6 +652,10 @@ class ChewieController extends ChangeNotifier {
 
   void togglePause() {
     isPlaying ? pause() : play();
+  }
+
+  void toggleControls() {
+    showControls = !showControls;
   }
 
   Future<void> play() async {
