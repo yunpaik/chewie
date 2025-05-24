@@ -658,6 +658,10 @@ class ChewieController extends ChangeNotifier {
     showControls = !showControls;
   }
 
+  void setShowControls(bool show) {
+    showControls = show;
+  }
+
   Future<void> play() async {
     await videoPlayerController.play();
   }
